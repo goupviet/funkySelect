@@ -66,12 +66,14 @@ border-right-color: #ddd;}
 .jquery-funkyselect-options {
 border: 1px solid #ddd;
 background-color: #fff;
+margin-top: 2px;
+display: none;
+position: absolute;
+/* drop shadow */
 -moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-margin-top: 2px;
-display: none;
-position: absolute;}
+filter:progid:DXImageTransform.Microsoft.Shadow(color='#999999', Direction=135, Strength=3);}
 
 .jquery-funkyselect-open .jquery-funkyselect-options {
 display: block;}
@@ -84,7 +86,8 @@ list-style-type: none;}
 .jquery-funkyselect-options li {
 padding: 2px 4px;
 white-space: nowrap;
-overflow: hidden;}
+overflow: hidden;
+position: relative;}
 
 .jquery-funkyselect-options li:hover {
 background-color: #eee;
