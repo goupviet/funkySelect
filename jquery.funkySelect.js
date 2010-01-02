@@ -74,20 +74,20 @@
         function adjustDimensions() {
 			
             // adjust height
-            selected.css('line-height', header.height() + 'px');
+            selected.css('line-height', header.height());
 			
             // adjust width
             var optsWidth = sOptions.outerWidth(),
                 arrowWidth = header.find('.jquery-funkyselect-arrow').eq(0).outerWidth(true),
                 width = optsWidth + arrowWidth;
             
-            sOptions.css('width', width + 'px');
+            sOptions.css('width', width);
 			
             if(parseInt($s.css('width'), 10) > 0) {
                 width = parseInt($s.css('width'), 10);
             }
 
-            $fs.css('width', width + 'px');
+            $fs.css('width', width);
 						
         }
         
