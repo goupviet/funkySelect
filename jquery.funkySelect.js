@@ -1,8 +1,13 @@
 /*
- * jQuery funkySelect
-*/
-
-// $('select').funkySelect();
+ * jQuery funkySelect Plugin
+ * Example at: http://dl.dropbox.com/u/1535375/funkySelect/index.html
+ * Copyright (c) 2010 J. Smith (@jjenzz)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * $('select').funkySelect();
+ */
 
 (function($) {
 
