@@ -8,8 +8,9 @@
 
     $.fn.funkySelect = function() {
         
-        var $s, $fs, header, sOptions, selected;
-        var funkySelect = [
+        var $s, $fs, header, sOptions, selected, funkySelect;
+        
+        funkySelect = [
             '<div class="jquery-funkyselect">',
                 '<div class="jquery-funkyselect-header jquery-funkyselect-corners">',
                     '<span class="jquery-funkyselect-selected"></span>',
@@ -22,16 +23,14 @@
         ];
         
         
-        bindEvents();
-        
         function bindEvents() {
-            var parentClass = 'jquery-funkyselect-container';
-            var headerClass = 'jquery-funkyselect-header';
-            var optionClass = 'jquery-funkyselect-option';
-            var openClass = 'jquery-funkyselect-open';
+            var parentClass = 'jquery-funkyselect-container',
+                headerClass = 'jquery-funkyselect-header',
+                optionClass = 'jquery-funkyselect-option',
+                openClass = 'jquery-funkyselect-open';
             
             $('html').bind('click', function(e) {
-               var target = $(e.target);
+                var $this, $cont, target = $(e.target);
                
                // on click outside of funkySelect boxes
                if (target.parents('.' + parentClass).length === 0) {
@@ -65,23 +64,44 @@
             });
 
         }
+        
 
+        function adjustDimensions() {
+			
+            // adjust height
+            selected.css('line-height', header.height() + 'px');
+			
+            // adjust width
+            var optsWidth = sOptions.outerWidth(),
+                arrowWidth = header.find('.jquery-funkyselect-arrow').eq(0).outerWidth(true),
+                width = optsWidth + arrowWidth;
+            
+            sOptions.css('width', width + 'px');
+			
+            if(parseInt($s.css('width'), 10) > 0) {
+                width = parseInt($s.css('width'), 10);
+            }
 
+            $fs.css('width', width + 'px');
+						
+        }
+        
+        
         function prepareMe() {
 			
             // prepend select options to funkySelect
             var html = [];
 			
             $s.children().each(function(i, val) {    
-                $this = $(this);
-                      
-                var addOption = function(el, i) {
+                var addOption, $this = $(this); 
+                
+                addOption = function(el, i) {
                     el.addClass('opt' + i);
 
                     html.push('<li class="jquery-funkyselect-option jquery-funkyselect-corners" rel="opt' + i + '">');
                     html.push(el.text());
                     html.push('</li>');
-                }
+                };
                 
                 if(this.tagName.toLowerCase() === 'optgroup') {
                     html.push('<li class="jquery-funkyselect-optiongroup jquery-funkyselect-corners">');
@@ -107,28 +127,9 @@
             adjustDimensions();
             
         }
-		
-		
-        function adjustDimensions() {
-			
-            // adjust height
-            selected.css('line-height', header.height() + 'px');
-			
-            // adjust width
-            var optsWidth = sOptions.outerWidth();
-            var arrowWidth = header.find('.jquery-funkyselect-arrow').eq(0).outerWidth(true);
-            var width = optsWidth + arrowWidth;
-            
-            sOptions.css('width', width + 'px');
-			
-            if(parseInt($s.css('width'), 10) > 0) {
-                width = parseInt($s.css('width'), 10);
-            }
-
-            $fs.css('width', width + 'px');
-						
-        }
-        		
+        
+        
+        bindEvents();		
 
         return this.each(function() {
 	
