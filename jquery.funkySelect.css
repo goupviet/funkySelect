@@ -1,0 +1,105 @@
+.jquery-funkyselect-container {
+display: inline-block;
+vertical-align: middle;}
+
+.jquery-funkyselect-container select {
+display: none;}
+
+.jquery-funkyselect a,
+.jquery-funkyselect-options a {
+text-decoration: none;
+color: #000;}
+
+.jquery-funkyselect-header {
+border: 1px solid #ccc;
+position: relative;
+min-height: 19px;
+padding: 2px;
+cursor: pointer;
+background-color: #fff;
+white-space: nowrap;}
+
+.jquery-funkyselect-open .jquery-funkyselect-header {
+background-color: #ffd;}
+
+.jquery-funkyselect-selected {
+overflow: hidden;
+display: block;}
+
+.jquery-funkyselect-arrow {
+background-color: #ccc;
+width: 20px;
+position: absolute;
+right: 2px;
+top: 2px;
+bottom: 2px;
+margin-left: 5px;}
+
+.jquery-funkyselect-header:hover .jquery-funkyselect-arrow {
+background-color: #ddd;}
+
+.jquery-funkyselect-arrow span {
+position: absolute;
+top: 50%;
+left: 50%;
+margin-top: -2px;
+margin-left: -5px;
+font-size: 0; 
+line-height: 0; 
+width: 0;
+border-top: 5px solid #666;
+border-left: 5px solid #ccc;
+border-right: 5px solid #ccc;}
+
+.jquery-funkyselect-header:hover .jquery-funkyselect-arrow span {
+border-left-color: #ddd;
+border-right-color: #ddd;}
+
+.jquery-funkyselect-options {
+border: 1px solid #ddd;
+background-color: #fff;
+-moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+-webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+margin-top: 2px;
+display: none;
+position: absolute;}
+
+.jquery-funkyselect-open .jquery-funkyselect-options {
+display: block;}
+
+.jquery-funkyselect-options ul {
+margin: 2px;
+padding: 0;
+list-style-type: none;}
+
+.jquery-funkyselect-options li {
+padding: 2px 4px;
+white-space: nowrap;
+overflow: hidden;}
+
+.jquery-funkyselect-options li:hover {
+background-color: #eee;
+cursor: pointer;}
+
+.jquery-funkyselect-optiongroup {
+font-weight: bold;}
+
+li.jquery-funkyselect-optiongroup:hover {
+background-color: transparent;
+cursor: default;}
+
+.jquery-funkyselect-optiongroup ul {
+font-weight: normal;
+margin: 0;
+padding: 0;}
+
+.jquery-funkyselect-optiongroup li {
+padding-left: 15px;
+margin-left: -4px;
+margin-right: -4px;}
+
+.jquery-funkyselect-corners {
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;}
