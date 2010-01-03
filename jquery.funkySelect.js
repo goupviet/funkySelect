@@ -1,6 +1,6 @@
 /*
  * jQuery funkySelect Plugin
- * Example at: http://dl.dropbox.com/u/1535375/funkySelect/index.html
+ * Example at: http://www.jjenzz.com/funkySelect/demo.html
  * Copyright (c) 2010 J. Smith (@jjenzz)
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
@@ -83,10 +83,7 @@
         }
 
         function adjustDimensions() {
-			
-            // adjust height
-            selected.css('line-height', header.height() + "px");
-			
+            
             // adjust width
             var optsWidth  = sOptions.outerWidth(),
                 arrowWidth = header.find('.' + cl.arrow ).eq(0).outerWidth(true),
@@ -105,9 +102,9 @@
         function prepareMe() {
 			
             // prepend select options to funkySelect
-            var html = [];
+            var html = [], count = 0;
 			
-            $s.children().each(function(i, val) {    
+            $s.children().each(function() {    
                 var addOption, $this = $(this); 
                 
                 addOption = function(el, i) {
@@ -116,6 +113,8 @@
                     html.push('<li class="' + cl.option + ' ' + cl.corners + '" rel="opt' + i + '">');
                     html.push(el.text());
                     html.push('</li>');
+                    
+                    count = count + 1;
                 };
                 
                 if(this.tagName.toLowerCase() === 'optgroup') {
@@ -123,14 +122,15 @@
                     html.push($this.attr('label'));
                     html.push('<ul>');
                     
-                    $this.children().each(function(i, val) {
-                        addOption($(this), i);
+                    $this.children().each(function() {
+                        addOption($(this), count);
                     });
                     
                     html.push('</ul></li>');
                 } else {
-                    addOption($this, i);
+                    addOption($this, count);
                 }
+
             });
 
             sOptions.children().append(html.join(''));
