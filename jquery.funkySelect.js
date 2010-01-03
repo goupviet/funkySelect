@@ -13,23 +13,15 @@
 
     $.fn.funkySelect = function( options ) {
         
-        var $s, $fs, header, sOptions, selected, funkySelect, o, cl;
+        var $s, $fs, header, sOptions, selected, funkySelect, o, cl = {};
         
         // Merge default options with the `options` parameter
         o = $.extend({}, $.fn.funkySelect.defaults, options ); // Allow defaults to be overwritten
         
         // Define classes
-        cl = {
-            parent:      [o.classPrefix, 'container'   ].join('-'),
-            header:      [o.classPrefix, 'header'      ].join('-'),
-            open:        [o.classPrefix, 'open'        ].join('-'),
-            corners:     [o.classPrefix, 'corners'     ].join('-'),
-            selected:    [o.classPrefix, 'selected'    ].join('-'),
-            arrow:       [o.classPrefix, 'arrow'       ].join('-'),
-            options:     [o.classPrefix, 'options'     ].join('-'),
-            option:      [o.classPrefix, 'option'      ].join('-'),
-            optiongroup: [o.classPrefix, 'optiongroup' ].join('-')
-        };
+        $.each(['container', 'header', 'open', 'corners', 'selected', 'arrow', 'options', 'option', 'optiongroup'], function(){
+            cl[this] = [o.classPrefix, this].join('-');
+        })
         
         funkySelect = [
             '<div class="', o.classPrefix ,'">',
@@ -50,18 +42,18 @@
                 var $this, $cont, target = $(e.target);
                
                // on click outside of funkySelect boxes
-               if (target.parents('.' + cl.parent).length === 0) {
-                   $('.' + cl.parent).removeClass(cl.open);
+               if (target.parents('.' + cl.container).length === 0) {
+                   $('.' + cl.container).removeClass(cl.open);
                }
                
                // on funkySelect header click
                if (target.hasClass(cl.header) || target.parents('.' + cl.header).length) {
-                   $cont = target.parents('.' + cl.parent);
+                   $cont = target.parents('.' + cl.container);
 
                    if($cont.hasClass(cl.open)) {
                        $cont.removeClass(cl.open);
                    } else {
-                       $('.' + cl.parent).removeClass(cl.open);
+                       $('.' + cl.container).removeClass(cl.open);
                        $cont.addClass(cl.open);
                    }                   
                }
@@ -69,7 +61,7 @@
                // on funkySelect option click
                if (target.hasClass(cl.option) || target.parents('.' + cl.option).length) {
                    $this = target.hasClass(cl.option) ? target : target.parents('.' + cl.option);
-                   $cont = target.parents('.' + cl.parent);
+                   $cont = target.parents('.' + cl.container);
 
                    $cont.find('.' + cl.selected).text(target.text());
                    $cont.find('.' + cl.header).trigger('click');
@@ -149,7 +141,7 @@
         return this.each(function() {
 	
             $s = $(this);
-            $s.wrap('<div class="' + cl.parent + '"></div>');
+            $s.wrap('<div class="' + cl.container + '"></div>');
             
             $fs = $s.parent();
             $fs.prepend(funkySelect.join(''));
